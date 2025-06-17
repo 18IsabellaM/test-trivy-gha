@@ -18,14 +18,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v0.63
+        uses: actions/checkout@v4
 
       - name: Run Trivy image scan
-        uses: aquasecurity/trivy-action@v0.63
+        uses: aquasecurity/trivy-action@0.28
         with:
           image-ref: alpine:3.20
-          format: sarif
-          output: trivy-results.sarif
+          format: 'sarif'
+          output: 'trivy-results.sarif'
 
       - name: Upload scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
