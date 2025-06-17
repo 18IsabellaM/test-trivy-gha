@@ -7,7 +7,9 @@ jobs:
   pull-image:
     name: Pull Docker Image
     runs-on: ubuntu-latest
-
+    steps:
+      - name: Pull Python Docker image
+        run: docker pull python:3.8
 
   trivy-scan:
     name: Scan Docker Image with Trivy
@@ -22,12 +24,13 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: python:3.8
-          format: 'sarif'
-          output: 'trivy-results.sarif'
+          format: sarif
+          output: trivy-results.sarif
 
       - name: Upload scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: trivy-results.sarif
+
       - name: Hello World test
         run: echo "✅ Workflow is running!"
