@@ -15,13 +15,12 @@ jobs:
     name: Scan Docker Image with Trivy
     runs-on: ubuntu-latest
     needs: pull-image
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@v0.31.0
+        uses: aquasecurity/trivy-action@0.0.6
         with:
           image-ref: alpine:3.20
           format: sarif
