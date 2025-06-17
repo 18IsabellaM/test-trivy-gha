@@ -3,6 +3,11 @@ name: Trivy Scan for Public Image
 on:
   workflow_dispatch:
 
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
 jobs:
   pull-image:
     name: Pull Docker Image
@@ -22,7 +27,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.0.6
         with:
-          scan-type: image
+          scan-type: image-ref
           image-ref: alpine:3.20
           format: sarif
           output: trivy-results.sarif
