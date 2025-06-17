@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Pull Python Docker image
-        run: docker pull python:3.8
+        run: docker pull alpine-3.20
 
   trivy-scan:
     name: Scan Docker Image with Trivy
@@ -21,9 +21,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run Trivy image scan
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@v0.4.0
         with:
-          image-ref: python:3.8
+          image-ref: alpine-3.20
           format: sarif
           output: trivy-results.sarif
 
