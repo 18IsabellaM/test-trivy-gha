@@ -27,7 +27,6 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          scan-type: image-ref
           image-ref: alpine:3.20
           format: sarif
           output: trivy-results.sarif
