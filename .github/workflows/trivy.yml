@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v0.63
 
       - name: Run Trivy image scan
-        uses: aquasecurity/trivy-action@v0.4.0
+        uses: aquasecurity/trivy-action@v0.63
         with:
           image-ref: alpine:3.20
           format: sarif
